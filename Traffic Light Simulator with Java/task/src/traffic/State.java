@@ -1,0 +1,14 @@
+package traffic;
+
+public enum State {
+    NOT_STARTED,
+    MAIN_MENU,
+    SYSTEM,
+    ADD_ROAD,
+    SHOW_ADDED_ROAD,
+    SHOW_DELETED_ROAD,
+    DELETE_ROAD,
+    INPUT_ROAD,
+    INPUT_INTERVAL,
+    SHOW_ADD_ROAD_ERROR, SHOW_DELETE_ROAD_ERROR, EXIT
+}

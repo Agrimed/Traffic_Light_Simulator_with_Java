@@ -1,0 +1,4 @@
+# Project exclude paths
+/.gradle/
+/Traffic Light Simulator with Java/task/out/
+/Traffic Light Simulator with Java/task/out/production/classes/
