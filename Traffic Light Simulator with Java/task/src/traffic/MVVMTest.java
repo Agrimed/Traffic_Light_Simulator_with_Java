@@ -10,4 +10,3 @@ public class MVVMTest {
     }
     //set state NOT_STARTED
 }
-

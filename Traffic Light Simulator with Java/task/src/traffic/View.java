@@ -82,9 +82,11 @@ public class View {
 
     private String handelInputRoad() {
         System.out.println("Input the number of roads: ");
+        StreetDB db = StreetDB.getINSTANCE();
+        int minRoads = db.countRoad();
         while (true) {
             String inputLine = waitingForInput();
-            if (!validateIntegerRange(inputLine, 1, Integer.MAX_VALUE)) {
+            if (!validateIntegerRange(inputLine, minRoads, Integer.MAX_VALUE)) {
                 System.out.println("Incorrect input. Please try again");
             } else {
                 return inputLine;

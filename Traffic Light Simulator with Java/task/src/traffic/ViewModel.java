@@ -51,11 +51,18 @@ public class ViewModel {
     private void handleInputRoad(String event) {
         model.roadsNumber = Integer.parseInt(event);
         circularQueue = new CircularQueue<>(model.roadsNumber);
+
+        StreetDB db = StreetDB.getINSTANCE();
+        List<String> roads = db.selectStreet().stream().map(dao -> dao.name).toList();
+        roads.forEach(road -> circularQueue.add(road));
         changeState(State.INPUT_INTERVAL);
     }
 
     private void handleAddRoad(String event) {
         try {
+            StreetDB db = StreetDB.getINSTANCE();
+            db.insertStreet(event);
+
             circularQueue.add(event);
             model.addedRoad = event;
             changeState(State.SHOW_ADDED_ROAD);
@@ -70,7 +77,9 @@ public class ViewModel {
 
     private void handleDeleteRoad() {
         try {
+            StreetDB db = StreetDB.getINSTANCE();
             model.deletedRoad = circularQueue.remove();
+            db.deleteStreet(model.deletedRoad);
             model.openRoadIndex--;
             changeState(State.SHOW_DELETED_ROAD);
         } catch (IllegalStateException e) {
